@@ -1,0 +1,17 @@
+#%RAML 1.0
+title: Phone Number Validation API
+description: This API consumes third party API to verify phone numbers.
+mediaType:
+    - application/json
+version: 1.0.0  
+baseUri: phone-number-validation-api
+uses:
+  Library: library.raml
+/Validation:
+  type:
+      Library.get:
+        exampleReference:
+          !include Examples/validationExample.raml
+  is:
+    - Library.errorResp
+    - Library.headers 

@@ -1,0 +1,13 @@
+http:
+  host: "![QrG9VudCZ1w791P62yMX/g==]"
+  port: "![AEF7PkmXBo7J/WusVaXgNw==]"
+  path: "![1i6BtRPhs0VrsppgTWztYQ==]"
+  pathco: "![qlFs1YHI+nS0pvvzptHnww==]"
+
+request:
+  host: "![koULRK3vmemZ20B7gBSek1RzBXLxkJUfH4VlQC5XkFY=]"
+  path: "![bq5713w+DykZwwcUq7Yuiv4NBCJINZEAPRJxt2o03iM=]"
+
+router:
+  outbound: "![0ejfYMoBRnlI6PpNtkzrFg==]"
+  http: "![GHa8tmN70nmd44jaUZZY7Q==]"

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties" xmlns:validation="http://www.mulesoft.org/schema/mule/validation"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd
+http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="8108ae7e-659c-447b-8f5b-5950f27e4482" >
+		<http:listener-connection host="${secure::http.host}" port="${secure::http.port}" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="404afecc-e5b6-493c-abcf-df0507420d92" >
+		<http:request-connection host="${secure::request.host}" >
+			<reconnection >
+				<reconnect count="3" />
+			</reconnection>
+		</http:request-connection>
+	</http:request-config>
+	<apikit:config outboundHeadersMapName="${secure::router.outbound}" httpStatusVarName="${secure::router.http}" doc:name="Router" doc:id="fda29b2d-c22f-49bc-a169-ceeb86d1b240" name="Phone-number-validation-systemAPI-config" api="Phone-number-validation-systemAPI.raml"/>
+	<validation:config name="Validation_Config" doc:name="Validation Config" doc:id="7cd14862-1bb8-4480-b5c9-83784ff0d2cd" />
+	<secure-properties:config name="Secure_Properties_Config" doc:name="Secure Properties Config" doc:id="3297c590-968e-4937-86ab-5f9e5ca99425" file="Dev-secure.yaml" key="worlds01mulesoft" />
+</mule>

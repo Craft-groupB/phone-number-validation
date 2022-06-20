@@ -1,0 +1,12 @@
+#%RAML 1.0 Library
+usage: Library
+
+traits:
+  errorResp: !include Traits/errorResponseTrait.raml
+  headers: !include Traits/headersTrait.raml
+
+types:
+  dataType: !include DataType/validationDataType.raml
+
+resourceTypes:
+  get: !include Resources/getResourceType.raml

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:validation="http://www.mulesoft.org/schema/mule/validation"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mule/validation/current/mule-validation.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="implementationFlow" doc:id="cc959688-b398-432e-9ecd-f3017ed8d79c" >
+		<set-variable value="#[attributes.queryParams.number]" doc:name="Phone Number" doc:id="c71646ce-1938-41c4-bc71-d9a8d00182b8" variableName="phoneNumber"/>
+		<validation:is-number doc:name="Is number" doc:id="5ce6198a-a428-43d1-8737-9592c840abaa" config-ref="Validation_Config" value="#[vars.phoneNumber]" numberType="FLOAT" message="Please insert a valid phone number"/>
+		<logger level="INFO" doc:name="Logger" doc:id="5ea30600-a2c4-425c-bb50-e2e28349ffe7" message="#[payload]"/>
+		<http:request method="GET" doc:name="Request" doc:id="098dede3-4968-4b2e-9b2b-0aa425779789" config-ref="HTTP_Request_configuration" path="${secure::request.path}">
+			<http:headers ><![CDATA[#[{
+	apikey:Mule::p('secure::sfdc.apikey')
+	
+
+}]]]></http:headers>
+			<http:query-params ><![CDATA[#[{ 
+	number:vars.phoneNumber
+}]]]></http:query-params>
+		</http:request>
+		<ee:transform doc:name="Transform Message" doc:id="4850a336-7a9b-4ffa-aa9c-3955bb8f7c4a" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Flow completed" doc:id="8ac7154c-0bf4-4dbe-82aa-09531203b130" message="#[payload]"/>
+	</flow>
+</mule>

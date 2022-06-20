@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="Phone-number-validation-systemAPI-test-suite.xml" />
+	<munit:test name="Phone-number-validation-systemAPI-test-suite-Phone-number-validation-systemAPI-mainTest" doc:id="49d47dda-348c-45be-b309-5f58d63b0e84" description="Test" expectedErrorType="APIKIT:BAD_REQUEST">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when APIKIT:BAD_REQUEST" doc:id="c2dd559e-65de-4097-8e7f-14c660faf108" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Phone-number-validation-systemAPI-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:BAD_REQUEST" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to Phone-number-validation-systemAPI-main" doc:id="064a7d7d-b81a-4318-9697-f3cf7f988458" name="Phone-number-validation-systemAPI-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="3e1f7b37-20d6-4bd3-8bbc-bd72b79cc26f" actual="#[vars.httpStatus]" expected="#[400]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="Phone-number-validation-systemAPI-test-suite-Phone-number-validation-systemAPI-mainTest1" doc:id="cb4136bc-e349-4f93-997b-26273c87b57f" description="Test" expectedErrorType="APIKIT:NOT_FOUND">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when APIKIT:NOT_FOUND " doc:id="e3b0fb94-f1a3-4f72-85e9-7124db540da9" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Phone-number-validation-systemAPI-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_FOUND" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to Phone-number-validation-systemAPI-main" doc:id="ab486777-50e1-43bd-9ac1-be4a570ef554" name="Phone-number-validation-systemAPI-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="ec27927c-dd9a-43c2-bd7c-05b5d40b5432" actual="#[vars.httpStatus]" expected="#[404]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="Phone-number-validation-systemAPI-test-suite-Phone-number-validation-systemAPI-mainTest2" doc:id="2337fbd6-8e7b-459b-b88b-4adaaf1d59db" description="Test" expectedErrorType="APIKIT:METHOD_NOT_ALLOWED">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when APIKIT:METHOD_NOT_ALLOWED" doc:id="ba64cbba-e728-46d7-b9d4-47b1321da2a9" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Phone-number-validation-systemAPI-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:METHOD_NOT_ALLOWED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to Phone-number-validation-systemAPI-main" doc:id="ee975341-96bf-4e31-b48e-8f68d8474790" name="Phone-number-validation-systemAPI-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="041fe5d2-37c7-4424-837b-941244075a4a" actual="#[vars.httpStatus]" expected="#[405]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="Phone-number-validation-systemAPI-test-suite-Phone-number-validation-systemAPI-mainTest3" doc:id="d02a18c2-48ec-45b9-94eb-0b451fa5d635" description="Test" expectedErrorType="APIKIT:NOT_ACCEPTABLE">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when APIKIT:NOT_ACCEPTABLE" doc:id="3ee868c3-e90e-4ca4-9182-3271fbeda704" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Phone-number-validation-systemAPI-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_ACCEPTABLE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to Phone-number-validation-systemAPI-main" doc:id="090d7f4a-dd5b-497a-b640-da886e808096" name="Phone-number-validation-systemAPI-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="e8056180-2d2f-4f05-898b-8844e4d4dff8" actual="#[vars.httpStatus]" expected="#[406]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="Phone-number-validation-systemAPI-test-suite-Phone-number-validation-systemAPI-mainTest4" doc:id="f1724645-08f6-4e87-9017-b7dec9e9730f" description="Test" expectedErrorType="APIKIT:UNSUPPORTED_MEDIA_TYPE">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when APIKIT:UNSUPPORTED_MEDIA_TYPE" doc:id="eea69f5f-7ca8-46fe-8ba6-67c97a8acd6d" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Phone-number-validation-systemAPI-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:UNSUPPORTED_MEDIA_TYPE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to Phone-number-validation-systemAPI-main" doc:id="6e2826a4-43aa-4d21-a4d8-a752cfe9c5d4" name="Phone-number-validation-systemAPI-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="73a55942-53b7-468a-9035-c6dbfc8faa08" actual="#[vars.httpStatus]" expected="#[415]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="Phone-number-validation-systemAPI-test-suite-Phone-number-validation-systemAPI-mainTest5" doc:id="44e55e92-74a1-4df1-b144-ecd954e03504" description="Test" expectedErrorType="APIKIT:NOT_IMPLEMENTED">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when APIKIT:NOT_IMPLEMENTED" doc:id="cb7b8188-9af5-4d62-9429-2cabc315edc0" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Phone-number-validation-systemAPI-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_IMPLEMENTED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to Phone-number-validation-systemAPI-main" doc:id="5c89409a-81fa-4c1d-8464-0e816e0ec8ef" name="Phone-number-validation-systemAPI-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="8b7d0a76-934c-41b9-bd2c-542c437f7296" actual="#[vars.httpStatus]" expected="#[501]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="Phone-number-validation-systemAPI-test-suite-Phone-number-validation-systemAPI-consoleTest" doc:id="f7ceb4a1-e8cf-4112-b2aa-e8730132b3f1" description="Test" expectedErrorType="APIKIT:NOT_FOUND">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock when APIKIT:NOT_FOUND" doc:id="42732633-6a40-4e5d-8f86-8bfd9385b926" processor="apikit:console">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Phone-number-validation-systemAPI-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_FOUND" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to Phone-number-validation-systemAPI-console" doc:id="66feac1f-0616-46eb-aad7-a021cc5e3640" name="Phone-number-validation-systemAPI-console"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="dd711c81-2d3c-4062-8606-3f5362904b54" actual="#[vars.httpStatus]" expected="#[404]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="get:\Validation:Phone-number-validation-systemAPI-config-test" doc:id="a2b64a5b-0f17-47da-9f75-54adfa5d16cb" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock Flow Reference" doc:id="3d7df26b-d894-4919-be19-29981463467f" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="e426b449-d58c-4170-9ea4-322780ce8055" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://getValidationPhonenumbervalidationsystemAPIconfigtest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://getValidationPhonenumbervalidationsystemAPIconfigtest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://getValidationPhonenumbervalidationsystemAPIconfigtest\mock_variable_.dwl')]" />
+						<munit-tools:variable key="phoneNumber" value="#[output application/java --- readUrl('classpath://getValidationPhonenumbervalidationsystemAPIconfigtest\mock_variable_1.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="4d5a7a60-60d4-466e-90b9-f180ad4ca479" >
+				<munit:payload value="#[readUrl('classpath://getValidationPhonenumbervalidationsystemAPIconfigtest\set-event_payload1.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://getValidationPhonenumbervalidationsystemAPIconfigtest\set-event_attributes1.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://getValidationPhonenumbervalidationsystemAPIconfigtest\set-event_variable_1.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\Validation:Phone-number-validation-systemAPI-config" doc:id="62f53dd3-1eea-4a1b-9bae-66ffb191f993" name="get:\Validation:Phone-number-validation-systemAPI-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="53b3f569-8542-475d-93da-e33d94406e94" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import getValidationPhonenumbervalidationsystemAPIconfigtest::assert_expression_payload1
+---
+assert_expression_payload1::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="implementationFlow-test" doc:id="2d4fdf9e-cf32-4f16-8c44-2fb2d0d6fcb2" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock Request" doc:id="e0375fda-0aad-4c05-9cd5-0049e2968be1" processor="http:request">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="098dede3-4968-4b2e-9b2b-0aa425779789" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://implementationFlowtest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://implementationFlowtest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://implementationFlowtest\mock_variable_.dwl')]" />
+						<munit-tools:variable key="phoneNumber" value="#[output application/java --- readUrl('classpath://implementationFlowtest\mock_variable_1.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="8a01986e-ae0c-4833-a32f-7047da7c1761" >
+				<munit:payload value="#[readUrl('classpath://implementationFlowtest\set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://implementationFlowtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implementationFlowtest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to implementationFlow" doc:id="0827c978-9155-45a7-ae43-71ce09a1abde" name="implementationFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="b825327b-a928-46ea-adbe-aaf84bc1c555" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import implementationFlowtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

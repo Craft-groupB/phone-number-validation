@@ -1,0 +1,20 @@
+#%RAML 1.0 ResourceType
+ get:
+   queryParameters:
+    number:
+      type: string
+      description: this is where the api accespts phone number from the client
+      required: true
+
+   responses:
+    200:
+      body:
+        application/json:
+          examples:
+            <<exampleReference>>
+            
+
+
+
+      
+               
